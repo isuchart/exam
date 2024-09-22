@@ -70,49 +70,49 @@ var body = {
 }
 break;
 
-case "ม.5/8":
-{
-url = "https://api.sheety.co/2fb80a9f78e03a86a9c645b99d92db92/score662/eight";
-var body = {
-  eight: {
-  "date": myDate,
-  "time": timeTest,
-  "lineId":  `${liff.getDecodedIDToken().sub}`,
-  "lineName": `${liff.getDecodedIDToken().name}`,
-  "room": `${stdData.room}`,
-  "no":  `${stdData.no}`,
-  "stdid":  `${stdData.stdid}`,
-  "prename": `${stdData.prename}`,
-  "fname":  `${stdData.fname}`,
-  "sname": `${stdData.sname}`,
-  "subject": `${subjectNow}`,
-  "score": `${score}`,
-  },
-};
-}
-break;
+// case "ม.5/8":
+// {
+// url = "https://api.sheety.co/2fb80a9f78e03a86a9c645b99d92db92/score662/eight";
+// var body = {
+//   eight: {
+//   "date": myDate,
+//   "time": timeTest,
+//   "lineId":  `${liff.getDecodedIDToken().sub}`,
+//   "lineName": `${liff.getDecodedIDToken().name}`,
+//   "room": `${stdData.room}`,
+//   "no":  `${stdData.no}`,
+//   "stdid":  `${stdData.stdid}`,
+//   "prename": `${stdData.prename}`,
+//   "fname":  `${stdData.fname}`,
+//   "sname": `${stdData.sname}`,
+//   "subject": `${subjectNow}`,
+//   "score": `${score}`,
+//   },
+// };
+// }
+// break;
 
-case "ม.5/9":
-{
-url = "https://api.sheety.co/2fb80a9f78e03a86a9c645b99d92db92/score662/nine";
-var body = {
-  nine: {
-  "date": myDate,
-  "time": timeTest,
-  "lineId":  `${liff.getDecodedIDToken().sub}`,
-  "lineName": `${liff.getDecodedIDToken().name}`,
-  "room": `${stdData.room}`,
-  "no":  `${stdData.no}`,
-  "stdid":  `${stdData.stdid}`,
-  "prename": `${stdData.prename}`,
-  "fname":  `${stdData.fname}`,
-  "sname": `${stdData.sname}`,
-  "subject": `${subjectNow}`,
-  "score": `${score}`,
-  },
-};
-}
-break;
+// case "ม.5/9":
+// {
+// url = "https://api.sheety.co/2fb80a9f78e03a86a9c645b99d92db92/score662/nine";
+// var body = {
+//   nine: {
+//   "date": myDate,
+//   "time": timeTest,
+//   "lineId":  `${liff.getDecodedIDToken().sub}`,
+//   "lineName": `${liff.getDecodedIDToken().name}`,
+//   "room": `${stdData.room}`,
+//   "no":  `${stdData.no}`,
+//   "stdid":  `${stdData.stdid}`,
+//   "prename": `${stdData.prename}`,
+//   "fname":  `${stdData.fname}`,
+//   "sname": `${stdData.sname}`,
+//   "subject": `${subjectNow}`,
+//   "score": `${score}`,
+//   },
+// };
+// }
+// break;
 
 default:
 url = "https://api.sheety.co/2fb80a9f78e03a86a9c645b99d92db92/score662/data";
