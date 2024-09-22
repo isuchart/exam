@@ -26,11 +26,11 @@ console.log(stdData)
 let tabRoom = stdData.room
 let url;
 switch (tabRoom) {
-case "ม.5/6":
+case "ม.5/4":
 {
-url = "https://api.sheety.co/2fb80a9f78e03a86a9c645b99d92db92/score662/six";
+url = "https://api.sheety.co/2fb80a9f78e03a86a9c645b99d92db92/score662/four";
 var body = {
-  six: {
+  four: {
   "date": myDate,
   "time": timeTest,
   "lineId":  `${liff.getDecodedIDToken().sub}`,
@@ -48,11 +48,11 @@ var body = {
 }
 break;
 
-case "ม.5/7":
+case "ม.5/10":
 {
-url = "https://api.sheety.co/2fb80a9f78e03a86a9c645b99d92db92/score662/seven";
+url = "https://api.sheety.co/2fb80a9f78e03a86a9c645b99d92db92/score662/ten";
 var body = {
-  seven: {
+  ten: {
   "date": myDate,
   "time": timeTest,
   "lineId":  `${liff.getDecodedIDToken().sub}`,
