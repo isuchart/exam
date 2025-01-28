@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <!-- Jquery -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+   <style>
+      table {
+         border-collapse: collapse;
+         /* ให้เส้นทึบชั้นเดียว */
+      }
+   
+      td,
+      th {
+         border: 1px solid black;
+         /* ให้เซลล์มีเส้นทิบดำความหนา 1 พิกเซล */
+      }
+   </style>
+</head>
+<body>
+   <div class="container">
+      <h4 class="my-3 text-left">
+         <i class="fa-solid fa-address-card"></i> ค้นหาข้อมูล
+       </h4>
+   <form id="data-form">
+      <div class="mb-3">
+        <label for="stdId" class="form-label">เลขประจำตัวนักเรียน</label>
+        <input type="tel" class="form-control" id="stdId" aria-describedby="emailHelp">
+      </div>
+      <!-- <div class="mb-3">
+        <label for="stdName" class="form-label">ชื่อนักเรียน</label>
+        <input type="text" class="form-control" id="stdName" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+        <label for="stdSurname" class="form-label">นามสกุลนักเรียน</label>
+        <input type="text" class="form-control" id="stdSurname">
+      </div> -->
+      <button type="submit" class="btn btn-primary" id="btnSubmit">Submit</button>
+    </form>
+      
+    <div class="mb-3">
+        <label class="form-label" id="stdShow"></label>
+    </div>
+
+      <table class="table table-striped d-block" id="stdTable">
+         <thead>
+            <tr>
+               <th>เรื่อง</th>
+               <th>ประเภท</th>
+               <th>ใบงาน/หน้า</th>
+               <th>คะแนน</th>
+               <!-- <th>อีเมล</th> -->
+               <!-- <th>position</th>
+               <th>add</th> -->
+            </tr>
+         </thead>
+         <tbody id="showData">
+            
+         </tbody>
+      </table>
+   </div>
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<script>
+const $showData = $("#showData");
+
+function showData(data) {
+   console.log(data)
+   console.log(data[0][10])
+   const $stdId = $("#stdId").val(); // อ่านค่า stdId ในขณะที่เรียกใช้ฟังก์ชั่น
+   const $stdName = $("#stdName").val(); // อ่านค่า stdName ในขณะที่เรียกใช้ฟังก์ชั่น
+   const $stdSurname = $("#stdSurname").val(); // อ่านค่า stdSurname ในขณะที่เรียกใช้ฟังก์ชั่น
+   
+   data.find(element => {
+      if (element[10] == $stdId){
+         console.log(element[10],$stdId)
+         let stdShow = element[1] + "/" + element[2] + " " + element[10] + " " + element[6]+ element[7] + " " + element[8] + " เลขที่ " + element[9]
+         $("#stdShow").html(stdShow)
+      }
+   })
+   
+   $("#data-form").addClass("d-none") // ปิดการแสดงผล Form
+   $showData.empty(); // Clear existing data
+   let stdScore = 0
+   data.forEach(val => {
+      // เช็คค่าของ val[7] และ val[8] ว่าเท่ากับค่าที่อ่านจาก input fields หรือไม่
+      // if (val[7] === $stdName && val[8] === $stdSurname) {
+      // เช็คค่าของ val[10] ว่าเท่ากับค่าที่อ่านจาก input fields หรือไม่
+      if (val[10] == $stdId) {
+         $showData.append(`<tr><td>${val[3]}</td><td>${val[4]}</td><td>${val[5]}</td><td>${val[11]}</td></tr>`);
+         stdScore += val[11]
+      }
+      // console.log(stdScore)
+   });
+   $showData.append(`<tr><td></td><td></td><td>รวมคะแนน</td><td>${stdScore}</td></tr>`);
+}
+
+const btnsubmit = document.querySelector("#btnSubmit");
+btnsubmit.addEventListener("click", (event) => {
+   event.preventDefault();
+   fetch('https://script.google.com/macros/s/AKfycbzRt_SdL4R65GSisBB3Mdc1Rez_Ga1LW4llnuJUQTSy6OA4_I94UBfl0oQtMC7kYdlo/exec')
+   .then(response => response.json())
+   .then(data => {
+      showData(data);
+   })
+   .catch(error => console.error('Error fetching data:', error));
+   $("#stdTable").addClass("d-block");
+   // $("#data-form")[0].reset()
+   // $("#stdName").val("")
+});
+
+
+   </script>
+</body>
+</html>
